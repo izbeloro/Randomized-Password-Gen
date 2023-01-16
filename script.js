@@ -1,13 +1,10 @@
-var characterLength = 8 < 12;
-var choiceArr = [];
-
 var specialCharArr = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '|', '?', '/', '>', '<'];
 var lowerCaseArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var upperCaseArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ];
 var numberArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ];
 var charSets = [];
+var password = "";
 
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
 function generatePrompt() {
@@ -28,26 +25,22 @@ function generatePrompt() {
   }
 }
 
+function randomizeChar(passwordLength) {
+  for (var i = 0; i < passwordLength; i++) {
+    password += charSets[Math.floor(Math.random() * charSets.length)]
+  }
+}
+
 function generatePassword() {
-  console.log("");
-  var passwordLength = prompt("How many characters do you want the password to be? (8 - 128 characters")
-  
+  var passwordLength = window.prompt("How many characters do you want the password to be? (8 - 128 characters")
   if (passwordLength >= 8 && passwordLength <= 128) {
     generatePrompt(); 
+    var randomPassword = randomizeChar(passwordLength);
   }
   else {
     alert("Character length has to be a number between 8 and 28 digits.");
   }
-
-  // 1. Prompt the user for the password criteria.
-  //      a. password length between 8 < 128.
-  //      b. lowercase, uppercase, special characters.
-  // 2. Validate the input. 
-  // 3. Generate password based on criteria.
-
-
-  // 4. Display generated password on the page.
-  return "";
+  return password;
 }
 
 // Write password to the #password input
